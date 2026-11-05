@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "node --test --experimental-strip-types --no-warnings tests/logic.test.ts"
+    "test": "node --test --experimental-strip-types --no-warnings tests/logic.test.ts",
+    "db:push": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/db-push.ps1"
   },
   "dependencies": {
     "@google/genai": "^2.32.0",
