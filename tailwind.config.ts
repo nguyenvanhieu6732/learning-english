@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			serif: ['var(--font-serif)', 'Cambria', 'Times New Roman', 'serif']
+  		},
   		colors: {
   			background: 'oklch(var(--background) / <alpha-value>)',
   			foreground: 'oklch(var(--foreground) / <alpha-value>)',

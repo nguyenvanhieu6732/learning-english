@@ -13,7 +13,7 @@ export function TheorySection({ theory }: { theory: LessonContent["theory"] }) {
         </ul>
       )}
       {theory.vietnamese_comparison && (
-        <div className="rounded-md bg-blue-50 p-3 dark:bg-blue-950">
+        <div className="rounded-md bg-accent p-3">
           <p className="font-medium">💡 So sánh với tiếng Việt</p>
           <p className="mt-1 whitespace-pre-line">{theory.vietnamese_comparison}</p>
         </div>

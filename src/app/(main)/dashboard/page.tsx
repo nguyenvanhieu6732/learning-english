@@ -11,15 +11,15 @@ import { DifficultyBadge } from "@/components/common/DifficultyBadge";
 
 export const metadata = { title: "Trang chủ – English Mastery" };
 
-function Stat({ icon: Icon, label, value, tint }: { icon: typeof Flame; label: string; value: string; tint: string }) {
+function Stat({ icon: Icon, label, value }: { icon: typeof Flame; label: string; value: string }) {
   return (
-    <div className="flex items-center gap-3 rounded-xl bg-white/15 p-3 backdrop-blur-sm">
-      <span className={`grid size-10 shrink-0 place-items-center rounded-lg ${tint}`}>
+    <div className="flex items-center gap-3 rounded-xl bg-secondary p-3">
+      <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
         <Icon className="size-5" aria-hidden="true" />
       </span>
       <div className="min-w-0">
         <p className="text-xl font-bold tabular-nums leading-tight">{value}</p>
-        <p className="truncate text-xs text-indigo-100">{label}</p>
+        <p className="truncate text-xs text-muted-foreground">{label}</p>
       </div>
     </div>
   );
@@ -44,15 +44,15 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-6">
-      <section className="rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 p-5 text-white shadow-lg shadow-indigo-500/20 sm:p-6">
-        <h1 className="text-2xl font-bold">Xin chào, {profile.data?.display_name || "bạn"}! 👋</h1>
-        <p className="mt-1 text-indigo-100">
+      <section className="rounded-2xl border bg-card p-5 shadow-sm sm:p-6">
+        <h1 className="text-3xl font-medium">Xin chào, {profile.data?.display_name || "bạn"}! 👋</h1>
+        <p className="mt-1 text-muted-foreground">
           {streak > 0 ? "Giữ vững chuỗi ngày học nhé." : "Học một bài hôm nay để bắt đầu chuỗi ngày học."}
         </p>
         <div className="mt-5 grid grid-cols-3 gap-2 sm:gap-3">
-          <Stat icon={Flame} label="ngày liên tiếp" value={fmt.format(streak)} tint="bg-orange-400 text-white" />
-          <Stat icon={Star} label="điểm" value={fmt.format(points)} tint="bg-yellow-400 text-yellow-950" />
-          <Stat icon={Award} label={`/${topics.length} chủ điểm`} value={fmt.format(doneCount)} tint="bg-emerald-400 text-emerald-950" />
+          <Stat icon={Flame} label="ngày liên tiếp" value={fmt.format(streak)} />
+          <Stat icon={Star} label="điểm" value={fmt.format(points)} />
+          <Stat icon={Award} label={`/${topics.length} chủ điểm`} value={fmt.format(doneCount)} />
         </div>
       </section>
 

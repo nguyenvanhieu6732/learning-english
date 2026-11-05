@@ -33,8 +33,7 @@ const STEPS = [
 function ExercisePreview() {
   return (
     <div className="relative">
-      <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-br from-indigo-200 via-violet-100 to-sky-100 blur-2xl" aria-hidden="true" />
-      <div className="rounded-2xl border bg-card p-5 shadow-xl" aria-label="Ví dụ màn hình bài tập">
+      <div className="rounded-2xl border bg-card p-5 shadow-sm" aria-label="Ví dụ màn hình bài tập">
         <div className="flex items-center justify-between text-sm text-muted-foreground">
           <span>Câu 3/10</span>
           <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">Dễ</span>
@@ -62,7 +61,7 @@ function ExercisePreview() {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-indigo-50/80 via-background to-background">
+    <div className="min-h-screen">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
         <Logo />
         <Button asChild variant="ghost">
@@ -73,10 +72,10 @@ export default function Home() {
       <main>
         <section className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-12 md:grid-cols-2 md:py-20">
           <div className="space-y-6">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-white px-3 py-1 text-sm font-medium text-indigo-700">
+            <span className="inline-flex items-center gap-1.5 rounded-full border bg-card px-3 py-1 text-sm font-medium text-muted-foreground">
               <Sparkles className="size-4" aria-hidden="true" /> Dành cho người Việt mới bắt đầu
             </span>
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+            <h1 className="text-4xl font-medium tracking-tight sm:text-5xl">
               Học tiếng Anh bằng cách <span className="text-primary">hiểu logic</span>, không phải học thuộc
             </h1>
             <p className="max-w-prose text-lg text-muted-foreground">
@@ -84,10 +83,10 @@ export default function Home() {
               tập có chấm điểm.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Button asChild size="lg" className="h-12 px-6 text-base shadow-lg shadow-indigo-500/25">
+              <Button asChild size="lg" className="h-12 px-6 text-base">
                 <Link href="/register">Bắt đầu miễn phí</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="h-12 bg-white px-6 text-base">
+              <Button asChild size="lg" variant="outline" className="h-12 bg-card px-6 text-base">
                 <Link href="/login">Tôi đã có tài khoản</Link>
               </Button>
             </div>
@@ -110,7 +109,7 @@ export default function Home() {
         </section>
 
         <section className="mx-auto max-w-6xl px-4 py-12">
-          <h2 className="text-center text-2xl font-bold sm:text-3xl">Mỗi chủ điểm, 5 bước</h2>
+          <h2 className="text-center text-2xl font-medium sm:text-3xl">Mỗi chủ điểm, 5 bước</h2>
           <ol className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-5">
             {STEPS.map(({ icon: Icon, label }, i) => (
               <li key={label} className="flex flex-col items-center gap-2 rounded-2xl border bg-card p-4 text-center shadow-sm">
@@ -125,10 +124,10 @@ export default function Home() {
         </section>
 
         <section className="mx-auto max-w-6xl px-4 pb-20 pt-8">
-          <div className="rounded-3xl bg-gradient-to-br from-indigo-600 to-violet-600 px-6 py-12 text-center text-white shadow-xl">
-            <h2 className="text-2xl font-bold sm:text-3xl">Sẵn sàng học tiếng Anh theo cách dễ hiểu?</h2>
-            <p className="mt-2 text-indigo-100">Miễn phí. Chỉ cần email hoặc tài khoản Google.</p>
-            <Button asChild size="lg" variant="secondary" className="mt-6 h-12 bg-white px-6 text-base text-indigo-700 hover:bg-indigo-50">
+          <div className="rounded-3xl bg-primary px-6 py-12 text-center text-primary-foreground">
+            <h2 className="text-2xl font-medium sm:text-3xl">Sẵn sàng học tiếng Anh theo cách dễ hiểu?</h2>
+            <p className="mt-2 text-primary-foreground/90">Miễn phí. Chỉ cần email hoặc tài khoản Google.</p>
+            <Button asChild size="lg" variant="secondary" className="mt-6 h-12 bg-card px-6 text-base text-foreground hover:bg-card/90">
               <Link href="/register">Tạo tài khoản</Link>
             </Button>
           </div>

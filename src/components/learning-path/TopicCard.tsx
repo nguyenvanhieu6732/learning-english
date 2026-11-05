@@ -14,9 +14,9 @@ export const STATUS_LABEL: Record<ProgressStatus, string> = {
 
 const STATUS_STYLE: Record<ProgressStatus, string> = {
   not_started: "bg-muted text-muted-foreground",
-  in_progress: "bg-blue-100 text-blue-800",
+  in_progress: "bg-amber-100 text-amber-900",
   completed: "bg-green-100 text-green-800",
-  mastered: "bg-violet-100 text-violet-800",
+  mastered: "bg-primary/10 text-primary",
 };
 
 export function StatusBadge({ status }: { status: ProgressStatus }) {

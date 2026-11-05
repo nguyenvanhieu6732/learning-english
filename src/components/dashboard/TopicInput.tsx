@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Loader2, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { LoadingSpark } from "@/components/common/LoadingSpark";
 import { DifficultySelector } from "@/components/common/DifficultySelector";
 import { SKILLS, type Difficulty, type Skill } from "@/lib/gemini/schemas";
 
@@ -77,9 +78,14 @@ export function TopicInput({ defaultLevel, topicId }: { defaultLevel: Difficulty
           {error}
         </p>
       )}
-      <Button type="submit" disabled={loading} className="w-full sm:w-auto">
-        {loading ? <Loader2 className="animate-spin" /> : <Sparkles />}
-        {loading ? "AI đang soạn bài (khoảng 30 giây)…" : "Tạo bài học"}
+      <Button type="submit" disabled={loading} className="w-full disabled:opacity-90 sm:w-auto">
+        {loading ? (
+          <LoadingSpark label="AI đang soạn bài (khoảng 30 giây)…" />
+        ) : (
+          <>
+            <Sparkles /> Tạo bài học
+          </>
+        )}
       </Button>
     </form>
   );

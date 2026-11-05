@@ -1,5 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import { Source_Serif_4 } from "next/font/google";
 import "./globals.css";
+
+// System serifs like Georgia lack many Vietnamese glyphs, which detaches the diacritics.
+const serif = Source_Serif_4({ subsets: ["latin", "vietnamese"], variable: "--font-serif" });
 
 export const metadata: Metadata = {
   title: "English Mastery – Học tiếng Anh theo logic",
@@ -8,14 +12,13 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f8f9fc" },
+    { media: "(prefers-color-scheme: light)", color: "#faf9f5" },
   ],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="vi">
-      {/* System font stack: full Vietnamese diacritics support without shipping a font. */}
+    <html lang="vi" className={serif.variable}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );

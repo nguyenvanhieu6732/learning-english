@@ -20,7 +20,7 @@ export function ProgressOverview({ phases }: { phases: PathPhase[] }) {
             aria-valuemax={100}
             aria-label={`Giai đoạn ${p.id}`}
           >
-            <div className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500" style={{ width: `${p.percent}%` }} />
+            <div className="h-full rounded-full bg-primary" style={{ width: `${p.percent}%` }} />
           </div>
         </li>
       ))}

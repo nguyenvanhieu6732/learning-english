@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { LoadingSpark } from "@/components/common/LoadingSpark";
 import { GoogleButton } from "./GoogleButton";
 
 export function LoginForm({ initialError }: { initialError?: string }) {
@@ -46,7 +47,7 @@ export function LoginForm({ initialError }: { initialError?: string }) {
           </p>
         )}
         <Button type="submit" className="h-11 w-full text-base" disabled={loading}>
-          {loading ? "Đang đăng nhập…" : "Đăng nhập"}
+          {loading ? <LoadingSpark label="Đang đăng nhập…" /> : "Đăng nhập"}
         </Button>
       </form>
       <GoogleButton />

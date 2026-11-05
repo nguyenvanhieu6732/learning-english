@@ -6,34 +6,59 @@
   .text-balance {
     text-wrap: balance;
   }
+  .loading-spark {
+    animation: loading-spark 2s ease-in-out infinite;
+  }
+  /* Mask instead of clipped text: inherits any text color, and stays readable if masks are unsupported. */
+  .loading-shimmer {
+    -webkit-mask-image: linear-gradient(90deg, #000 35%, rgb(0 0 0 / 0.35) 50%, #000 65%);
+    mask-image: linear-gradient(90deg, #000 35%, rgb(0 0 0 / 0.35) 50%, #000 65%);
+    -webkit-mask-size: 300% 100%;
+    mask-size: 300% 100%;
+    animation: loading-shimmer 2s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .loading-spark,
+    .loading-shimmer {
+      animation: none;
+    }
+  }
+}
+@keyframes loading-spark {
+  0%, 100% { transform: rotate(0deg) scale(0.8); opacity: 0.6; }
+  50% { transform: rotate(90deg) scale(1.1); opacity: 1; }
+}
+@keyframes loading-shimmer {
+  from { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+  to { -webkit-mask-position: 0% 0; mask-position: 0% 0; }
 }
 @layer base {
   :root {
-    /* Brand: indigo primary on a faintly tinted page; cards stay white. */
-    --background: 0.984 0.003 264.542;
-    --foreground: 0.21 0.034 264.665;
-    --card: 1 0 0;
-    --card-foreground: 0.21 0.034 264.665;
-    --popover: 1 0 0;
-    --popover-foreground: 0.21 0.034 264.665;
-    --primary: 0.511 0.262 276.966;
-    --primary-foreground: 1 0 0;
-    --secondary: 0.962 0.018 272.314;
-    --secondary-foreground: 0.398 0.195 277.366;
-    --muted: 0.967 0.003 264.542;
-    --muted-foreground: 0.551 0.027 264.364;
-    --accent: 0.962 0.018 272.314;
-    --accent-foreground: 0.398 0.195 277.366;
+    /* Brand: warm ivory page, terracotta primary, sand for quiet surfaces. */
+    --background: 0.982 0.005 95;
+    --foreground: 0.24 0.006 75;
+    --card: 0.995 0.002 95;
+    --card-foreground: 0.24 0.006 75;
+    --popover: 0.995 0.002 95;
+    --popover-foreground: 0.24 0.006 75;
+    --primary: 0.57 0.135 38;
+    --primary-foreground: 0.995 0.002 95;
+    --secondary: 0.95 0.012 85;
+    --secondary-foreground: 0.33 0.015 65;
+    --muted: 0.955 0.009 85;
+    --muted-foreground: 0.5 0.014 70;
+    --accent: 0.95 0.012 85;
+    --accent-foreground: 0.33 0.015 65;
     --destructive: 0.577 0.245 27.325;
-    --border: 0.928 0.006 264.531;
-    --input: 0.872 0.01 258.338;
-    --ring: 0.673 0.182 276.935;
+    --border: 0.91 0.01 85;
+    --input: 0.86 0.013 85;
+    --ring: 0.62 0.13 38;
     --chart-1: 0.871 0.006 286.286;
     --chart-2: 0.552 0.016 285.938;
     --chart-3: 0.442 0.017 285.786;
     --chart-4: 0.37 0.013 285.805;
     --chart-5: 0.274 0.006 286.033;
-    --radius: 0.5rem;
+    --radius: 0.75rem;
     --sidebar: 0.985 0 0;
     --sidebar-foreground: 0.141 0.005 285.823;
     --sidebar-primary: 0.21 0.006 285.885;
@@ -91,6 +116,7 @@
   h1,
   h2,
   h3 {
+    @apply font-serif;
     text-wrap: balance;
   }
 }
