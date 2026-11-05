@@ -3,10 +3,13 @@ import { lessonResponseSchema, validateLesson, type Difficulty, type Skill } fro
 import { SYSTEM_PROMPT, lessonPrompt } from "./prompts";
 
 // Spec named @google/generative-ai; that SDK is deprecated, @google/genai is its replacement.
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-const MODEL = process.env.GEMINI_MODEL ?? "gemini-2.5-flash";
+// Created on first call so `next build` doesn't need GEMINI_API_KEY.
+let ai: GoogleGenAI | undefined;
+const MODEL = process.env.GEMINI_MODEL ?? "gemini-3.5-flash";
 
 export async function generateLesson(topic: string, difficulty: Difficulty, skills: Skill[]) {
+  // Gemini often answers 503 during demand spikes; the SDK retries those with backoff.
+  ai ??= new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY, httpOptions: { retryOptions: { attempts: 5 } } });
   const res = await ai.models.generateContent({
     model: MODEL,
     contents: lessonPrompt(topic, difficulty, skills),

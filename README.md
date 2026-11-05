@@ -54,7 +54,7 @@ cp .env.example .env.local
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase → Project Settings → API |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase → Project Settings → API |
 | `GEMINI_API_KEY` | [Google AI Studio](https://aistudio.google.com/apikey) |
-| `GEMINI_MODEL` *(optional)* | Defaults to `gemini-2.5-flash` |
+| `GEMINI_MODEL` *(optional)* | Defaults to `gemini-3.5-flash` |
 
 ### 4. Run
 
