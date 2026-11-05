@@ -3,6 +3,21 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { isCorrect, scoreOf, statusFor, computeStreak } from "../src/lib/scoring.ts";
 import { validateLesson } from "../src/lib/gemini/schemas.ts";
+import { findHighlight } from "../src/lib/highlight.ts";
+
+test("findHighlight prefers whole words and falls back to a substring", () => {
+  const marked = (text: string, h: string) => {
+    const r = findHighlight(text, h);
+    return r && text.slice(r.start, r.end);
+  };
+  assert.deepEqual(findHighlight("I want a new phone.", "a"), { start: 7, end: 8 }); // not the "a" in "want"
+  assert.equal(marked("An apple", "an"), "An"); // case-insensitive, keeps original case
+  assert.deepEqual(findHighlight("Tôi ăn a", "a"), { start: 7, end: 8 }); // "ă" counts as a letter
+  assert.equal(marked("She walked home", "walk"), "walk"); // AI quoted part of a word
+  assert.equal(marked("Use a/an (or the).", "a/an (or"), "a/an (or"); // regex characters are literal
+  assert.equal(findHighlight("Hello", "xyz"), null);
+  assert.equal(findHighlight("Hello", ""), null);
+});
 
 test("isCorrect ignores case, spacing and end punctuation", () => {
   assert.equal(isCorrect("fill_blank", "  An ", "an"), true);

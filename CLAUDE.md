@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 - `npm run dev`: dev server (needs `.env.local`, copy from `.env.example`)
-- `npm test`: pure-logic tests (`tests/logic.test.ts`), run by Node's built-in test runner with type stripping, no extra deps. Test files import with `.ts` extensions, so `tests/` is excluded from `tsconfig.json`, and the modules they import (`src/lib/scoring.ts`, `src/lib/gemini/schemas.ts`) must stay import-free.
+- `npm test`: pure-logic tests (`tests/logic.test.ts`), run by Node's built-in test runner with type stripping, no extra deps. Test files import with `.ts` extensions, so `tests/` is excluded from `tsconfig.json`, and the modules they import (`src/lib/scoring.ts`, `src/lib/gemini/schemas.ts`, `src/lib/highlight.ts`) must stay import-free.
 - `npm run lint`, `npx tsc --noEmit`, `npm run build`
 
 ## Setup

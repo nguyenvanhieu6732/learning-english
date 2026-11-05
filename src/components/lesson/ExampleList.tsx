@@ -1,17 +1,17 @@
 import { CornerDownRight } from "lucide-react";
+import { findHighlight } from "@/lib/highlight";
 import type { LessonContent } from "@/lib/gemini/schemas";
 
-/** Wraps the first occurrence of `highlight` in <mark>. */
 function Highlighted({ text, highlight }: { text: string; highlight: string }) {
-  const i = highlight ? text.toLowerCase().indexOf(highlight.toLowerCase()) : -1;
-  if (i < 0) return <>{text}</>;
+  const range = findHighlight(text, highlight);
+  if (!range) return <>{text}</>;
   return (
     <>
-      {text.slice(0, i)}
+      {text.slice(0, range.start)}
       <mark className="rounded bg-yellow-200 px-0.5 dark:bg-yellow-800 dark:text-white">
-        {text.slice(i, i + highlight.length)}
+        {text.slice(range.start, range.end)}
       </mark>
-      {text.slice(i + highlight.length)}
+      {text.slice(range.end)}
     </>
   );
 }
