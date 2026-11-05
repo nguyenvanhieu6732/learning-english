@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { Check, ChevronRight } from "lucide-react";
 import { DifficultyBadge } from "@/components/common/DifficultyBadge";
 import { cn } from "@/lib/utils";
 import type { PathTopic } from "@/lib/learning-path";
@@ -21,8 +21,8 @@ const STATUS_STYLE: Record<ProgressStatus, string> = {
 
 export function StatusBadge({ status }: { status: ProgressStatus }) {
   return (
-    <span className={cn("inline-flex rounded-full px-2 py-0.5 text-xs font-medium", STATUS_STYLE[status])}>
-      {status === "mastered" && "✓ "}
+    <span className={cn("inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium", STATUS_STYLE[status])}>
+      {status === "mastered" && <Check className="size-3" aria-hidden="true" />}
       {STATUS_LABEL[status]}
     </span>
   );

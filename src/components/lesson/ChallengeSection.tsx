@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,7 +14,9 @@ export function ChallengeSection({ challenge }: { challenge: LessonContent["chal
 
   return (
     <section className="space-y-4 rounded-lg border p-4">
-      <h2 className="font-semibold">🏆 Thử thách: tự sản xuất</h2>
+      <h2 className="flex items-center gap-2 font-semibold">
+        <Trophy className="size-5 shrink-0 text-primary" aria-hidden="true" /> Thử thách: tự sản xuất
+      </h2>
       <p className="whitespace-pre-line">{challenge.prompt}</p>
       <div className="space-y-2">
         <Label htmlFor="challenge">Bài làm của bạn</Label>

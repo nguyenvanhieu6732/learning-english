@@ -1,3 +1,4 @@
+import { Target } from "lucide-react";
 import { getUser } from "@/lib/supabase/server";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TopicInput } from "@/components/dashboard/TopicInput";
@@ -18,7 +19,9 @@ export default async function CustomLessonPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">🎯 Sinh bài học theo chủ đề</h1>
+      <h1 className="flex items-center gap-2 text-2xl font-bold">
+        <Target className="size-6 shrink-0 text-primary" aria-hidden="true" /> Sinh bài học theo chủ đề
+      </h1>
       <Card>
         <CardHeader>
           <CardTitle>AI sẽ soạn lý thuyết, 8–12 ví dụ, 10 bài tập và 1 thử thách</CardTitle>

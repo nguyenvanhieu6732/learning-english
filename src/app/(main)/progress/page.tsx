@@ -1,3 +1,4 @@
+import { Map } from "lucide-react";
 import { getUser } from "@/lib/supabase/server";
 import { loadLearningPath, isDone } from "@/lib/learning-path";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,7 +17,9 @@ export default async function ProgressPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">🗺️ Lộ trình 5 Đầu Mục Cốt Lõi</h1>
+        <h1 className="flex items-center gap-2 text-2xl font-bold">
+          <Map className="size-6 shrink-0 text-primary" aria-hidden="true" /> Lộ trình 5 Đầu Mục Cốt Lõi
+        </h1>
         <p className="mt-1 text-muted-foreground">
           Hoàn thành {all.filter((t) => isDone(t.status)).length}/{all.length} chủ điểm · {mastered} chủ điểm đã “tự động”
           (đúng ≥ 85%). Mỗi chủ điểm: Hiểu logic → Ví dụ → Bài tập → Tự viết → Sửa lỗi.

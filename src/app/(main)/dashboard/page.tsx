@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Award, BookOpen, Flame, History, Sparkles, Star } from "lucide-react";
+import { ArrowRight, Award, BookOpen, Flame, Hand, History, PartyPopper, Sparkles, Star } from "lucide-react";
 import { getUser } from "@/lib/supabase/server";
 import { loadLearningPath, isDone } from "@/lib/learning-path";
 import { computeStreak } from "@/lib/scoring";
@@ -45,7 +45,9 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-6">
       <section className="rounded-2xl border bg-card p-5 shadow-sm sm:p-6">
-        <h1 className="text-3xl font-medium">Xin chào, {profile.data?.display_name || "bạn"}! 👋</h1>
+        <h1 className="flex items-center gap-2 text-3xl font-medium">
+          Xin chào, {profile.data?.display_name || "bạn"}! <Hand className="size-6 shrink-0 text-primary" aria-hidden="true" />
+        </h1>
         <p className="mt-1 text-muted-foreground">
           {streak > 0 ? "Giữ vững chuỗi ngày học nhé." : "Học một bài hôm nay để bắt đầu chuỗi ngày học."}
         </p>
@@ -68,7 +70,9 @@ export default async function DashboardPage() {
               ))}
             </div>
           ) : (
-            <p className="rounded-xl border bg-card p-4 text-muted-foreground">🎉 Bạn đã hoàn thành toàn bộ lộ trình!</p>
+            <p className="flex items-center gap-2 rounded-xl border bg-card p-4 text-muted-foreground">
+              <PartyPopper className="size-5 shrink-0 text-primary" aria-hidden="true" /> Bạn đã hoàn thành toàn bộ lộ trình!
+            </p>
           )}
         </section>
 
@@ -78,8 +82,8 @@ export default async function DashboardPage() {
           </CardHeader>
           <CardContent>
             <ProgressOverview phases={phases} />
-            <Link href="/progress" className="mt-4 inline-block text-sm font-medium text-primary hover:underline">
-              Xem toàn bộ lộ trình →
+            <Link href="/progress" className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">
+              Xem toàn bộ lộ trình <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
           </CardContent>
         </Card>

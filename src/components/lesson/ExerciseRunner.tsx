@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { CheckCircle2, XCircle } from "lucide-react";
+import { ArrowRight, CheckCircle2, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { LoadingSpark } from "@/components/common/LoadingSpark";
@@ -120,7 +120,13 @@ export function ExerciseRunner({ lessonId, exercises, startedAt }: { lessonId: s
             setIndex(index + 1);
           }}
         >
-          {isLast ? (busy ? <LoadingSpark label="Đang lưu…" /> : "Xem kết quả") : "Câu tiếp theo →"}
+          {isLast ? (
+            busy ? <LoadingSpark label="Đang lưu…" /> : "Xem kết quả"
+          ) : (
+            <>
+              Câu tiếp theo <ArrowRight aria-hidden="true" />
+            </>
+          )}
         </Button>
       )}
     </section>

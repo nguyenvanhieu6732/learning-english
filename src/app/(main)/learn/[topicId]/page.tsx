@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArrowLeft, Sparkles } from "lucide-react";
 import { getUser } from "@/lib/supabase/server";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TopicInput } from "@/components/dashboard/TopicInput";
@@ -28,8 +29,8 @@ export default async function TopicPage({ params }: { params: { topicId: string 
 
   return (
     <div className="space-y-6">
-      <Link href="/progress" className="text-sm text-muted-foreground hover:underline">
-        ← Lộ trình
+      <Link href="/progress" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:underline">
+        <ArrowLeft className="size-4" aria-hidden="true" /> Lộ trình
       </Link>
       <div>
         <p className="text-sm text-muted-foreground">Giai đoạn {topic.phase_id}</p>
@@ -43,7 +44,9 @@ export default async function TopicPage({ params }: { params: { topicId: string 
 
       <Card>
         <CardHeader>
-          <CardTitle>✨ Tạo bài học mới cho chủ điểm này</CardTitle>
+          <CardTitle className="flex items-center gap-2">
+            <Sparkles className="size-5 shrink-0 text-primary" aria-hidden="true" /> Tạo bài học mới cho chủ điểm này
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <TopicInput topicId={topic.id} defaultLevel={topic.difficulty} />

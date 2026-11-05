@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
+import { ArrowLeft, BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DifficultyBadge } from "@/components/common/DifficultyBadge";
@@ -36,12 +37,15 @@ export function LessonView({ lessonId, title, difficulty, backHref, content, exe
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <Link href={backHref} className="text-sm text-muted-foreground hover:underline">
-          ← Quay lại
+        <Link href={backHref} className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:underline">
+          <ArrowLeft className="size-4" aria-hidden="true" /> Quay lại
         </Link>
         <DifficultyBadge value={difficulty} />
       </div>
-      <h1 className="text-2xl font-bold">📖 {title}</h1>
+      <h1 className="flex items-start gap-2 text-2xl font-bold">
+        <BookOpen className="mt-1 size-6 shrink-0 text-primary" aria-hidden="true" />
+        {title}
+      </h1>
 
       <Tabs value={STEPS[step].key} onValueChange={(v) => setStep(STEPS.findIndex((s) => s.key === v))}>
         <TabsList className="grid w-full grid-cols-4">
@@ -68,13 +72,13 @@ export function LessonView({ lessonId, title, difficulty, backHref, content, exe
 
       <div className="flex items-center justify-between border-t pt-4">
         <Button variant="outline" disabled={step === 0} onClick={() => setStep(step - 1)}>
-          ◀ Trước
+          <ChevronLeft aria-hidden="true" /> Trước
         </Button>
         <span className="text-sm text-muted-foreground">
           Bước {step + 1}/{STEPS.length}
         </span>
         <Button disabled={step === STEPS.length - 1} onClick={() => setStep(step + 1)}>
-          Tiếp theo ▶
+          Tiếp theo <ChevronRight aria-hidden="true" />
         </Button>
       </div>
     </div>

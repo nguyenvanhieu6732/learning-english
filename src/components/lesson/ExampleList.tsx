@@ -1,3 +1,4 @@
+import { CornerDownRight } from "lucide-react";
 import type { LessonContent } from "@/lib/gemini/schemas";
 
 /** Wraps the first occurrence of `highlight` in <mark>. */
@@ -24,7 +25,10 @@ export function ExampleList({ examples }: { examples: LessonContent["examples"] 
             {i + 1}. <Highlighted text={ex.en} highlight={ex.highlight} />
           </p>
           <p className="text-sm text-muted-foreground">{ex.vi}</p>
-          <p className="mt-1 text-sm">👉 {ex.why}</p>
+          <p className="mt-1 flex gap-1.5 text-sm">
+            <CornerDownRight className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
+            <span>{ex.why}</span>
+          </p>
         </li>
       ))}
     </ol>
